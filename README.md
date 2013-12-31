@@ -16,13 +16,13 @@ The rtags bin directory needs to be in your PATH.
 
 Consider adding the following to your .vimrc:
 ```
-nnoremap &lt;silent&gt; &lt;localleader&gt;r :call RtagsReferences()&lt;CR&gt;
+nnoremap <silent> <localleader>r :call RtagsReferences()<CR>
 ```
 
 Recommended plugin: [Vim-unimpared](https://github.com/tpope/vim-unimpaired) which maps:
-* [l, ]l to move up/down the lines in the "location list" window
-* [L, ]L move to first/last entry, and
-* [&lt;C-L&gt;, ]&lt;C-L&gt; to jump to previous/next file.
+* `[l, ]l` to move up/down the lines in the "location list" window
+* `[L, ]L` to move to first/last entry, and
+* `[<C-L>, ]<C-L>` to jump to previous/next file.
 
 
 To do
