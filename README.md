@@ -16,7 +16,7 @@ The rtags bin directory needs to be in your PATH.
 
 Consider adding the following to your .vimrc:
 ```
-nnoremap <silent> <localleader>r :call Rtags_references()<CR>
+nnoremap <silent> <localleader>r :call Rtags_references_to_symbol_under_cursor()<CR>
 ```
 
 Recommended plugin: [Vim-unimpared](https://github.com/tpope/vim-unimpaired) which maps:

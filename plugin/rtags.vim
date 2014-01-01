@@ -1,4 +1,4 @@
-function! Rtags_references()
+function! Rtags_references_to_symbol_under_cursor()
     call s:Rtags_query('--references '.bufname('%').','.s:Cursor_byte_offset_from_start_of_file())
 endfunction
 
