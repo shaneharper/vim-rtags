@@ -1,5 +1,6 @@
 function! s:Cursor_byte_offset_from_start_of_file()
-    return line2byte(line("."))+col(".")
+    return line2byte(line("."))-1
+           \  + col(".")-1
 endfunction
 
 function! s:Echo_error(msg)
