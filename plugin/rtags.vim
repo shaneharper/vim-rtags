@@ -1,13 +1,9 @@
-function! s:Cursor_byte_offset_from_start_of_file()
-    return line2byte(line("."))-1
-           \  + col(".")-1
+function! Rtags_references()
+    call s:Rtags_query('--references '.bufname('%').','.s:Cursor_byte_offset_from_start_of_file())
 endfunction
 
-function! s:Echo_error(msg)
-    echohl WarningMsg
-    echomsg a:msg
-    echohl None
-endfunction
+command! -nargs=1 RtagsFind call <SID>Rtags_query('--find-symbols '.<f-args>)
+
 
 function! s:Rtags_query(arguments)
     let location_list = []
@@ -25,8 +21,13 @@ function! s:Rtags_query(arguments)
     lwindow
 endfunction
 
-function! Rtags_references()
-    call s:Rtags_query('--references '.bufname('%').','.s:Cursor_byte_offset_from_start_of_file())
+function! s:Cursor_byte_offset_from_start_of_file()
+    return line2byte(line("."))-1
+           \  + col(".")-1
 endfunction
 
-command! -nargs=1 RtagsFind call <SID>Rtags_query('--find-symbols '.<f-args>)
+function! s:Echo_error(msg)
+    echohl WarningMsg
+    echomsg a:msg
+    echohl None
+endfunction
