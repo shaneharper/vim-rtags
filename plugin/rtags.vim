@@ -10,8 +10,17 @@ function! s:Rtags_query(arguments)
     let rc_output = system('rc --line-numbers '.a:arguments)
     if ! v:shell_error
         for ref in split(rc_output, '\n')
-            let ref_array = split(ref, ':')
-            let location_list += [{'filename':ref_array[0], 'lnum':ref_array[1], 'text':ref_array[3]}]
+            let matches = matchlist(ref,
+                        \ '\(.\{-}\):' .
+                        \ '\(.\{-}\):' .
+                        \   '.\{-}:'   .
+                        \ '\t\(.*\)')
+            if len(matches) == 0
+                call s:Echo_error(ref)
+                continue
+            endif
+            let [ref, pathname, line_number, line_text; unused_elements] = matches
+            let location_list += [{'filename':pathname, 'lnum':line_number, 'text':line_text}]
         endfor
     else
         call s:Echo_error("Failed with error code ".v:shell_error.". ".rc_output)
