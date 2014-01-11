@@ -10,11 +10,8 @@ function! s:Rtags_query(arguments)
     let rc_output = system('rc --line-numbers '.a:arguments)
     if ! v:shell_error
         for ref in split(rc_output, '\n')
-            let matches = matchlist(ref,
-                        \ '\(.\{-}\):' .
-                        \ '\(.\{-}\):' .
-                        \   '.\{-}:'   .
-                        \ '\t\(.*\)')
+            let ANY='.\{-}'
+            let matches = matchlist(ref, '\('.ANY.'\):\('.ANY.'\):'.ANY.':\t\(.*\)')
             if len(matches) == 0
                 call s:Echo_error(ref)
                 continue
@@ -31,8 +28,7 @@ function! s:Rtags_query(arguments)
 endfunction
 
 function! s:Cursor_byte_offset_from_start_of_file()
-    return line2byte(line("."))-1
-           \  + col(".")-1
+    return (line2byte(line("."))-1) + (col(".")-1)
 endfunction
 
 function! s:Echo_error(msg)
