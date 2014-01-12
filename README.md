@@ -31,7 +31,7 @@ Note: `<localleader>` is backslash, unless overridden by `maplocalleader`.
 
 See `./ftplugin/c.vim` to define custom mappings.
 
-The [Vim-unimpared](https://github.com/tpope/vim-unimpaired) plugin can help navigate the output of vim-rtags. It maps:
+The [Vim-unimpared](https://github.com/tpope/vim-unimpaired) plugin can help with navigating the output of vim-rtags. It maps:
 * `[l, ]l` to move up/down a line in the "location list" window
 * `[L, ]L` to move to first/last entry, and
 * `[<C-L>, ]<C-L>` to jump to previous/next file.
